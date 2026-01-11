@@ -1,0 +1,4 @@
+patient_id	observation_code	observation_label	value	unit	recorded_date
+RMHC001	BP_HIGH	High Blood Pressure	150/95	mmHg	2024-11-15
+RMHC002	SPO2_LOW	Low Oxygen Saturation	89	%	2024-11-15
+RMHC003	TEMP_FEVER	Fever	38.9	°C	2024-11-16
