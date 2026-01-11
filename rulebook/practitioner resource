@@ -1,0 +1,26 @@
+{
+  "resourceType": "Practitioner",
+  "id": "ExamplePractitioner",
+  "identifier": [
+    {
+      "system": "http://hospital.smarthealth.org/practitioners",
+      "value": "PRAC123"
+    }
+  ],
+  "name": [
+    {
+      "family": "Sharma",
+      "given": [
+        "Anita"
+      ]
+    }
+  ],
+  "gender": "female",
+  "qualification": [
+    {
+      "code": {
+        "text": "MBBS"
+      }
+    }
+  ]
+}
