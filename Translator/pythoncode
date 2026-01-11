@@ -1,0 +1,62 @@
+import pandas as pd
+
+# -----------------------------
+# Step 1: Load RMHC CSV Data
+# -----------------------------
+input_file = "rmhc_observations.csv"
+df = pd.read_csv(input_file)
+
+# -----------------------------
+# Step 2: ConceptMap (Local → Standard)
+# -----------------------------
+concept_map = {
+    "BP_HIGH": {
+        "system": "http://hl7.org/fhir/sid/icd-10",
+        "code": "I10",
+        "display": "Essential (primary) hypertension"
+    },
+    "SPO2_LOW": {
+        "system": "http://loinc.org",
+        "code": "59408-5",
+        "display": "Oxygen saturation in Arterial blood"
+    },
+    "TEMP_FEVER": {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+    }
+}
+
+# -----------------------------
+# Step 3: Translation Function
+# (Simulates FHIR $translate)
+# -----------------------------
+def translate_code(local_code):
+    return concept_map.get(local_code, {
+        "system": "UNKNOWN",
+        "code": "UNKNOWN",
+        "display": "Unmapped concept"
+    })
+
+# -----------------------------
+# Step 4: Apply Translation
+# -----------------------------
+df["standard_system"] = df["observation_code"].apply(
+    lambda x: translate_code(x)["system"]
+)
+
+df["standard_code"] = df["observation_code"].apply(
+    lambda x: translate_code(x)["code"]
+)
+
+df["standard_display"] = df["observation_code"].apply(
+    lambda x: translate_code(x)["display"]
+)
+
+# -----------------------------
+# Step 5: Export Translated Data
+# -----------------------------
+output_file = "rmhc_observations_translated.csv"
+df.to_csv(output_file, index=False)
+
+print("Migration and semantic translation completed successfully.")
