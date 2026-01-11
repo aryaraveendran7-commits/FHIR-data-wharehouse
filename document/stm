@@ -1,0 +1,11 @@
+Source (RMHC CSV)	Transformation Rule	Target (FHIR-Aligned Output)
+patient_id	Preserve value; anonymised identifier retained	Patient.identifier.value
+observation_code	Look up local code in ConceptMap	Observation.code.coding.code
+observation_code	Map local RMHC code system	Observation.code.coding.system
+observation_label	Used for reference only; not stored as meaning	Observation.code.text (display)
+value	Convert to FHIR-compatible datatype	Observation.value[x]
+unit	Normalize units (if required)	Observation.valueQuantity.unit
+recorded_date	Convert to ISO 8601 format	Observation.effectiveDateTime
+RMHC system	Fixed mapping	Observation.subject → Patient
+Local clinician ID	Optional reference mapping	Observation.performer → Practitioner
+Magic string values	Eliminated via $translate	Standard terminology (LOINC / ICD-10)
