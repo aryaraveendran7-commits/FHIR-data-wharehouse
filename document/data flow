@@ -1,0 +1,1 @@
+Data movement describes how clinical data flows from the RMHC legacy system into a FHIR-based interoperable environment while maintaining semantic integrity. The process ensures that data meaning is preserved, standardized, and made reusable across systems without relying on magic strings or application-specific logic.
