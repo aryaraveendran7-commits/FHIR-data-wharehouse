@@ -1,0 +1,41 @@
+┌────────────────────┐
+│ RMHC Legacy System │
+│  (CSV / Excel)     │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────────┐
+│   Ingestion Layer      │
+│  (CSV Parser / ETL)    │
+└─────────┬──────────────┘
+          │
+          ▼
+┌──────────────────────────────┐
+│ Semantic Translation Layer   │
+│                              │
+│  • Local CodeSystem          │
+│  • ConceptMap                │
+│  • $translate Operation      │
+│                              │
+└─────────┬────────────────────┘
+          │
+          ▼
+┌────────────────────────┐
+│ FHIR Resource Builder  │
+│ (Patient, Observation │
+│  Practitioner)        │
+└─────────┬──────────────┘
+          │
+          ▼
+┌────────────────────────┐
+│   FHIR Server / API    │
+│ (Interoperable Store) │
+└─────────┬──────────────┘
+          │
+          ▼
+┌────────────────────────────┐
+│ Downstream Consumers       │
+│ • HMIS / EHR               │
+│ • Analytics & Reporting    │
+│ • Public Health Systems    │
+└────────────────────────────┘
