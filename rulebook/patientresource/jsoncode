@@ -1,0 +1,20 @@
+{
+  "resourceType": "Patient",
+  "id": "ExamplePatient",
+  "identifier": [
+    {
+      "system": "http://hospital.smarthealth.org/patients",
+      "value": "PAT456"
+    }
+  ],
+  "name": [
+    {
+      "family": "Kumar",
+      "given": [
+        "Ravi"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-06-15"
+}
